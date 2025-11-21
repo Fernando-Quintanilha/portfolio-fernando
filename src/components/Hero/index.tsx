@@ -1,10 +1,10 @@
-import { ArrowRight, Code2, Github, Linkedin } from 'lucide-react';
+import { ArrowRight, Code2} from 'lucide-react';
 
 export function Hero() {
     const isAvailable = false;
 
     return (
-        <section id="/home" className="relative flex min-h-screen items-center justify-center pt-20 overflow-hidden">
+        <section className="relative flex min-h-screen items-center justify-center pt-20 overflow-hidden">
 
             {/* Background Glow (Mantido) */}
             <div className={`absolute top-20 left-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full blur-[100px] ${isAvailable ? 'bg-primary/20' : 'bg-red-500/20'
