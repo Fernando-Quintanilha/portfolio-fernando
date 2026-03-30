@@ -1,4 +1,5 @@
-import { Terminal, Github, Linkedin, Mail, Instagram } from 'lucide-react';
+import { Terminal, Github, Linkedin, Mail } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
@@ -9,56 +10,66 @@ export function Footer() {
 
                 <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 mb-12">
 
-                    {/* Coluna 1: Marca e Bio */}
                     <div className="lg:col-span-2">
                         <div className="flex items-center gap-2 text-xl font-bold tracking-tighter text-white mb-4">
-                            <Terminal className="text-primary" size={24} />
-                            <span>Fernando<span className="text-primary">.dev</span></span>
+                            <Terminal className="text-emerald-400" size={24} />
+                            <span>Fernando<span className="text-emerald-400">.dev</span></span>
                         </div>
                         <p className="text-gray-400 max-w-sm leading-relaxed">
-                            Desenvolvedor focado em criar experiências digitais de alto impacto.
-                            Transformando ideias complexas em interfaces simples e performáticas.
+                            Engenheiro de Software Full Stack. Transformo ideias em sistemas escaláveis, do banco de dados à interface de usuário.
                         </p>
                     </div>
 
-                    {/* Coluna 2: Links Rápidos */}
                     <div>
                         <h3 className="text-white font-bold mb-4">Navegação</h3>
                         <ul className="space-y-3 text-sm text-gray-400">
                             <li>
-                                <a href="#home" className="hover:text-primary transition-colors">Início</a>
+                                <a href="#home" className="hover:text-emerald-400 transition-colors">Início</a>
                             </li>
                             <li>
-                                <a href="#servicos" className="hover:text-primary transition-colors">Soluções</a>
+                                <a href="#servicos" className="hover:text-emerald-400 transition-colors">Soluções</a>
                             </li>
                             <li>
-                                <a href="#projetos" className="hover:text-primary transition-colors">Portfólio</a>
+                                <a href="#sobre" className="hover:text-emerald-400 transition-colors">Sobre</a>
                             </li>
                             <li>
-                                <a href="/links" className="hover:text-primary transition-colors">Meus Links</a>
+                                <a href="#projetos" className="hover:text-emerald-400 transition-colors">Portfólio</a>
+                            </li>
+                            <li>
+                                <a href="#depoimentos" className="hover:text-emerald-400 transition-colors">Depoimentos</a>
                             </li>
                         </ul>
                     </div>
 
-                    {/* Coluna 3: Contato */}
                     <div>
-                        <h3 className="text-white font-bold mb-4">Contato</h3>
+                        <h3 className="text-white font-bold mb-4">Contato Direto</h3>
                         <ul className="space-y-3">
                             <li>
                                 <a
-                                    href="mailto:seuemail@exemplo.com"
-                                    className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+                                    href="mailto:fernando@quintanilha.dev"
+                                    className="flex items-center gap-2 text-sm text-gray-400 hover:text-emerald-400 transition-colors"
                                 >
                                     <Mail size={18} />
-                                    seuemail@gmail.com
+                                    fehdacostaquintanilhafilho@gmail.com
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href="https://linkedin.com"
+                                    href="https://wa.me/5562984048425"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+                                    className="flex items-center gap-2 text-sm text-gray-400 hover:text-emerald-400 transition-colors"
+                                >
+                                    <FaWhatsapp size={18} />
+                                    WhatsApp
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://linkedin.com/in/fernando-quintanilha"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 text-sm text-gray-400 hover:text-emerald-400 transition-colors"
                                 >
                                     <Linkedin size={18} />
                                     LinkedIn
@@ -66,24 +77,13 @@ export function Footer() {
                             </li>
                             <li>
                                 <a
-                                    href="https://github.com"
+                                    href="https://github.com/Fernando-Quintanilha"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+                                    className="flex items-center gap-2 text-sm text-gray-400 hover:text-emerald-400 transition-colors"
                                 >
                                     <Github size={18} />
                                     GitHub
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://instagram.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
-                                >
-                                    <Instagram size={18} />
-                                    Instagram
                                 </a>
                             </li>
                         </ul>
@@ -91,14 +91,13 @@ export function Footer() {
 
                 </div>
 
-                {/* Rodapé do Rodapé (Copyright) */}
                 <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
                     <p className="text-sm text-gray-500">
                         © {currentYear} Fernando Quintanilha. Todos os direitos reservados.
                     </p>
 
                     <p className="text-sm text-gray-500 flex items-center gap-1">
-                        Feito com <span className="text-red-500">❤</span> e <span className="text-primary font-bold">React</span>
+                        Feito com <span className="text-emerald-400 font-bold">React</span>
                     </p>
                 </div>
 
