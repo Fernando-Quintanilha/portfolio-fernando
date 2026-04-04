@@ -1,5 +1,5 @@
 import { Code2, Lightbulb, Award, Zap } from 'lucide-react';
-import fernandoAI from "../../assets/fernandoAI.png";
+import fernandoAI from "../../assets/fernandoRobo.jpg";
 
 export function About() {
     return (
@@ -8,7 +8,6 @@ export function About() {
 
                 <div className="grid gap-16 lg:grid-cols-2 items-start">
 
-                    {/* Esquerda - Foto com Glassmorphism */}
                     <div className="flex flex-col items-center justify-center order-2 lg:order-1">
                         <div className="mb-6">
                             <span className="inline-block px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/50 text-emerald-400 text-xs font-bold uppercase tracking-wider">
@@ -17,23 +16,19 @@ export function About() {
                         </div>
 
                         <div className="relative w-full max-w-sm">
-                            {/* Glassmorphism background */}
                             <div className="absolute inset-0 rounded-2xl backdrop-blur-2xl bg-gradient-to-br from-white/15 to-white/5 border border-white/20 shadow-2xl -z-10 scale-105"></div>
 
-                            {/* Imagem com borda verde */}
                             <div className="relative overflow-hidden rounded-2xl border-2 border-emerald-400/50 shadow-2xl">
                                 <img
                                     src={fernandoAI}
                                     alt="Fernando Quintanilha - Engenheiro de Software"
                                     className="w-full h-auto object-cover"
                                 />
-                                {/* Overlay subtle */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent"></div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Direita - Texto e Estatísticas */}
                     <div className="order-1 lg:order-2">
                         <h2 className="text-sm font-bold uppercase tracking-widest text-emerald-400 mb-4">
                             Quem sou eu
@@ -57,7 +52,6 @@ export function About() {
                             Eles vêm de entender o problema, arquitetar a solução certa e executar sem compromissos.
                         </p>
 
-                        {/* Métricas como tags sleek */}
                         <div className="flex flex-wrap gap-3 mb-10">
                             <div className="px-4 py-2 rounded-full bg-emerald-500/15 border border-emerald-400/40 text-emerald-400 font-bold text-sm">
                                 4+ Projetos Full Stack
@@ -73,7 +67,6 @@ export function About() {
                             </div>
                         </div>
 
-                        {/* Skills com ícones */}
                         <div className="space-y-4">
                             <div className="flex gap-4">
                                 <div className="flex-shrink-0 mt-1">

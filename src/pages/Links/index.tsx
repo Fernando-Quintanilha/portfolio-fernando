@@ -4,10 +4,9 @@ export function Links() {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-dark-900 p-4">
 
-            {/* Foto de Perfil */}
             <div className="h-24 w-24 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-500 p-[2px] mb-4">
                 <img
-                    src="https://github.com/fernandoquintanilha.png" // Tenta pegar sua foto do Github se tiver user, senao usa placeholder
+                    src="https://github.com/fernandoquintanilha.png"
                     alt="Fernando"
                     className="h-full w-full rounded-full bg-dark-900 object-cover"
                 />
@@ -16,7 +15,6 @@ export function Links() {
             <h1 className="text-xl font-bold text-white mb-2">Fernando Quintanilha</h1>
             <p className="text-gray-400 mb-8 text-sm">Desenvolvedor & Growth Engineer</p>
 
-            {/* Lista de Botões */}
             <div className="flex w-full max-w-xs flex-col gap-4">
 
                 <a href="/" className="flex items-center justify-center gap-2 rounded-lg bg-dark-800 p-4 font-medium text-white transition-all hover:bg-dark-800/50 hover:scale-105 border border-white/5">
