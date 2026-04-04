@@ -1,4 +1,4 @@
-import { Layout, Smartphone, Code2, Rocket, Database, LineChart, GitBranch, Zap } from 'lucide-react';
+import { Layout, Code2, Rocket, Database, GitBranch, Zap } from 'lucide-react';
 
 export function Services() {
 

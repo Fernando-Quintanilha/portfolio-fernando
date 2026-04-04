@@ -2,8 +2,7 @@ import { Github, ExternalLink } from 'lucide-react';
 import fortunedash from "../../assets/dashfortune.png";
 import catalogoWeb from "../../assets/catalogoTh.png";
 import hsSign from "../../assets/hsSign.png";
-import industrialM from "../../assets/dashfortune.png"
-import { MdDescription } from 'react-icons/md';
+import industrialM from "../../assets/dashfortune.png";
 export function Projects() {
 
     const projects = [
