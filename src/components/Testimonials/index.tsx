@@ -44,16 +44,19 @@ export function Testimonials() {
                             key={index}
                             className="rounded-xl border border-white/5 bg-dark-900 p-8 transition-all hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/5"
                         >
+                            {/* Stars */}
                             <div className="flex gap-1 mb-4">
                                 {Array.from({ length: testimonial.rating }).map((_, i) => (
                                     <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
                                 ))}
                             </div>
 
+                            {/* Conteúdo */}
                             <p className="text-gray-400 leading-relaxed mb-6 italic">
                                 "{testimonial.content}"
                             </p>
 
+                            {/* Autor */}
                             <div className="flex items-center gap-4">
                                 <img
                                     src={testimonial.image}

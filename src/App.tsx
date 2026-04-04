@@ -16,20 +16,3 @@ function App() {
 }
 
 export default App
-//       <Routes>
-//         {/* Rota Principal (Mostra Navbar + Home) */}
-//         <Route path="/" element={
-//           <>
-//             <Navbar />
-//             <Home />
-//           </>
-//         } />
-
-//         <Route path="/links" element={<Links />} /> 
-//       </Routes>
-      
-//     </div>
-//   )
-// }
-
-// export default App aaa
