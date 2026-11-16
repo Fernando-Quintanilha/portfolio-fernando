@@ -65,7 +65,7 @@ export function Hero({ obstacle = null, spriteUrl, children }: Props) {
             </p>
             <ul className="pointer-events-auto mt-5 flex flex-wrap gap-x-5 gap-y-2">
               <li>
-                <a className="link-line" href={links.curriculo} target="_blank" rel="noreferrer">
+                <a className="link-line" href={t.resumeUrl} target="_blank" rel="noreferrer">
                   {t.nav.resume} ↗
                 </a>
               </li>

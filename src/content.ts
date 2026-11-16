@@ -1,6 +1,7 @@
 import hsSign from './assets/hsSign.png';
 import fortuna from './assets/dashfortune.png';
-import catalogo from './assets/catalogoTh.png';
+import catalogo from './assets/catalogo.jpg';
+import timeshape from './assets/timeshape.jpg';
 import fotoRobo from './assets/fernandoRobo.jpg';
 import type { Lang } from './lib/lang';
 
@@ -11,7 +12,6 @@ export const links = {
   linkedin: 'https://www.linkedin.com/in/fernando-quintanilha',
   github: 'https://github.com/Fernando-Quintanilha',
   whatsapp: 'https://wa.me/5562984048425',
-  curriculo: '/Fernando-Quintanilha-Curriculo.pdf',
   robotCode: 'https://github.com/Fernando-Quintanilha/FtcRobotController-master',
 };
 
@@ -35,6 +35,7 @@ type Stat = { value?: number; text?: string; label: string };
 
 export type Content = {
   meta: { title: string };
+  resumeUrl: string;
   nav: { work: string; projects: string; robotics: string; contact: string; resume: string; menu: string; close: string; home: string };
   profile: { first: string; last: string; role: string; line: string; hintClick: string; hintTouch: string; hintStatic: string };
   work: {
@@ -84,6 +85,7 @@ const stack = {
 
 const pt: Content = {
   meta: { title: 'Fernando Quintanilha — desenvolvedor back-end' },
+  resumeUrl: '/Fernando-Quintanilha-Curriculo.pdf',
   nav: {
     work: 'trabalho',
     projects: 'projetos',
@@ -143,6 +145,7 @@ const pt: Content = {
           'SaaS de agendamento em produção: página pública de reservas, Google Calendar e assinatura recorrente pelo Mercado Pago. Constraint de exclusão no banco impede reserva sobreposta.',
         stack: stack.timeshape,
         links: [{ label: 'app.timeshape.online', href: 'https://app.timeshape.online' }],
+        image: timeshape,
         note: 'código privado, mostro na entrevista',
       },
       {
@@ -212,6 +215,7 @@ const pt: Content = {
 
 const en: Content = {
   meta: { title: 'Fernando Quintanilha — back-end developer' },
+  resumeUrl: '/Fernando-Quintanilha-Resume.pdf',
   nav: {
     work: 'work',
     projects: 'projects',
@@ -271,6 +275,7 @@ const en: Content = {
           'Scheduling SaaS in production: public booking page, Google Calendar sync and recurring billing through Mercado Pago. A database exclusion constraint prevents overlapping bookings.',
         stack: stack.timeshape,
         links: [{ label: 'app.timeshape.online', href: 'https://app.timeshape.online' }],
+        image: timeshape,
         note: 'private code, happy to walk through it in an interview',
       },
       {

@@ -53,7 +53,7 @@ export function Contact() {
             <a href={links.whatsapp} target="_blank" rel="noreferrer" className="link-line">
               whatsapp ↗
             </a>
-            <a href={links.curriculo} target="_blank" rel="noreferrer" className="link-line">
+            <a href={t.resumeUrl} target="_blank" rel="noreferrer" className="link-line">
               {t.nav.resume} ↗
             </a>
             <span className="font-mono text-[13px] text-ink-soft">{links.email}</span>

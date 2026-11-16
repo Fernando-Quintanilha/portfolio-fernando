@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { links } from '../../content';
 import { scrollToId } from '../../hooks/useSmoothScroll';
 import { useLang } from '../../i18n';
 import type { Lang } from '../../lib/lang';
@@ -72,7 +71,7 @@ export function Navbar({ onLogoTap }: Props) {
 
         <div className="flex items-center gap-5">
           <LangToggle />
-          <a href={links.curriculo} target="_blank" rel="noreferrer" className="link-line hidden md:inline-flex">
+          <a href={t.resumeUrl} target="_blank" rel="noreferrer" className="link-line hidden md:inline-flex">
             {t.nav.resume} ↗
           </a>
           <button
@@ -107,7 +106,7 @@ export function Navbar({ onLogoTap }: Props) {
               </li>
             ))}
             <li className="border-t border-ink/20 pt-6">
-              <a href={links.curriculo} target="_blank" rel="noreferrer" className="link-line">
+              <a href={t.resumeUrl} target="_blank" rel="noreferrer" className="link-line">
                 {t.nav.resume} ↗
               </a>
             </li>
