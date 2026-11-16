@@ -79,7 +79,7 @@ export type Content = {
 const stack = {
   timeshape: ['C# .NET', 'React', 'PostgreSQL', 'Docker', 'outbox/inbox', 'CI'],
   holerite: ['.NET 8', 'React', 'PostgreSQL', 'Redis', 'MinIO', 'Docker'],
-  fortuna: ['React', 'TypeScript', 'Vite', 'PWA'],
+  fortuna: ['React', 'TypeScript', 'Vite', 'Firebase'],
   catalogo: ['Python', 'Pandas', 'React', 'TypeScript'],
 };
 
@@ -109,7 +109,7 @@ const pt: Content = {
     label: 'trabalho',
     title: 'Sistemas que a empresa usa todo dia.',
     company: 'TH Distribuidora',
-    role: 'Desenvolvedor e TI',
+    role: 'Analista de TI e Sistemas / Desenvolvedor',
     period: 'jan/2026 – atual',
     city: 'Goiânia',
     intro:
@@ -125,7 +125,7 @@ const pt: Content = {
       { name: 'Painel gerencial', what: 'Financeiro, estoque e vendedores integrados ao Sankhya pelo API Gateway com OAuth.', stack: 'Node.js · serverless · Vercel' },
       { name: 'Painel do vendedor', what: 'PWA com valores conciliados ao relatório de comissão.', stack: 'PBKDF2 · HMAC-SHA256 · CSP · HSTS' },
       { name: 'Força de vendas', what: 'Pedidos, liberações e área administrativa, para substituir um sistema terceirizado pago.', stack: 'React · Node.js · Sankhya' },
-      { name: 'Painéis de TV', what: 'Produtividade do estoque e desempenho dos motoristas, nas telas do galpão.', stack: 'React · Sankhya · Kaizen' },
+      { name: 'Painéis de TV', what: 'Produtividade do estoque e desempenho dos motoristas, nas telas do galpão.', stack: 'React · Sankhya · WMS' },
       { name: 'Catálogo digital', what: 'Cerca de 4 mil itens com pedido pelo WhatsApp.', stack: 'React · Python' },
       {
         name: 'Banco e infraestrutura',
@@ -136,13 +136,13 @@ const pt: Content = {
   },
   projects: {
     label: 'projetos',
-    title: 'Coisas que eu construí por conta própria.',
+    title: 'Projetos que eu construí.',
     screenshotOf: 'Tela do',
     items: [
       {
         name: 'TimeShape',
         summary:
-          'SaaS de agendamento em produção: página pública de reservas, Google Calendar e assinatura recorrente pelo Mercado Pago. Constraint de exclusão no banco impede reserva sobreposta.',
+          'SaaS de agendamento em produção: página pública de reservas, Google Calendar e assinatura recorrente pelo Mercado Pago. Restrição de exclusão no PostgreSQL impede reserva sobreposta.',
         stack: stack.timeshape,
         links: [{ label: 'app.timeshape.online', href: 'https://app.timeshape.online' }],
         image: timeshape,
@@ -158,7 +158,7 @@ const pt: Content = {
       },
       {
         name: 'Fortuna.io',
-        summary: 'PWA para acompanhar investimentos, com modo privacidade que esconde os valores na tela.',
+        summary: 'Finanças pessoais: entradas e gastos por categoria, com alerta quando os gastos passam da receita e sincronização em tempo real.',
         stack: stack.fortuna,
         links: [
           { label: 'ver no ar', href: 'https://fortuna-io.vercel.app' },
@@ -186,11 +186,11 @@ const pt: Content = {
     caption3d: 'modelo do CAD · role para girar',
     captionPhoto: 'torneio nacional FTC',
     awards: [
+      { year: '2026', text: 'Juiz voluntário da seletiva de Goiás da FTC e mentor de equipes' },
       { year: '2025', text: 'Prêmio Nacional de Excelência em Engenharia e Documentação — Torneio Nacional FTC' },
       { year: '2025', text: '1º lugar geral (Inspire) — etapa regional FTC' },
       { year: '2024', text: 'Prêmio Nacional de Excelência em Software e Controle Autônomo — Torneio Nacional FTC' },
       { year: '2023', text: 'Palestrante na Campus Party Goiás' },
-      { year: '2026', text: 'Juiz voluntário da seletiva de Goiás da FTC e mentor de equipes' },
     ],
     atlas:
       'Cofundei a Atlas Tech Education (2023–2026): ensinei lógica e robótica para cerca de 50 jovens e mentorei 12 estudantes em competições FIRST.',
@@ -201,7 +201,7 @@ const pt: Content = {
     about: [
       'Estudo Engenharia de Software na UniAlfa e trabalho na TH desde janeiro de 2026.',
       'Gosto de problema que tem banco de dados no meio: consistência, segurança e conferir o número até bater.',
-      'Antes de programar por profissão, vendi dinossauros no ARK.',
+      'Antes de programar por profissão, vendia dinossauros no ARK, o jogo: meu primeiro negócio.',
     ],
     where: 'Remoto ou presencial em Goiânia.',
     email: 'Mandar um e-mail',
@@ -239,7 +239,7 @@ const en: Content = {
     label: 'work',
     title: 'Systems the company runs on every day.',
     company: 'TH Distribuidora',
-    role: 'Developer and IT',
+    role: 'IT and Systems Analyst / Developer',
     period: 'Jan 2026 – present',
     city: 'Goiânia, Brazil',
     intro:
@@ -255,7 +255,7 @@ const en: Content = {
       { name: 'Management dashboard', what: 'Finance, inventory and sales, integrated with Sankhya through its API Gateway with OAuth.', stack: 'Node.js · serverless · Vercel' },
       { name: 'Sales rep app', what: 'PWA whose figures reconcile with the commission report.', stack: 'PBKDF2 · HMAC-SHA256 · CSP · HSTS' },
       { name: 'Sales force app', what: 'Orders, approvals and an admin area, replacing a paid third-party system.', stack: 'React · Node.js · Sankhya' },
-      { name: 'Warehouse TV dashboards', what: 'Picking productivity and driver performance, on the warehouse screens.', stack: 'React · Sankhya · Kaizen' },
+      { name: 'Warehouse TV dashboards', what: 'Picking productivity and driver performance, on the warehouse screens.', stack: 'React · Sankhya · WMS' },
       { name: 'Digital catalog', what: 'About 4,000 items with ordering through WhatsApp.', stack: 'React · Python' },
       {
         name: 'Database and infrastructure',
@@ -266,13 +266,13 @@ const en: Content = {
   },
   projects: {
     label: 'projects',
-    title: 'Things I built on my own.',
+    title: 'Projects I built.',
     screenshotOf: 'Screenshot of',
     items: [
       {
         name: 'TimeShape',
         summary:
-          'Scheduling SaaS in production: public booking page, Google Calendar sync and recurring billing through Mercado Pago. A database exclusion constraint prevents overlapping bookings.',
+          'Scheduling SaaS in production: public booking page, Google Calendar sync and recurring billing through Mercado Pago. A PostgreSQL exclusion constraint prevents overlapping bookings.',
         stack: stack.timeshape,
         links: [{ label: 'app.timeshape.online', href: 'https://app.timeshape.online' }],
         image: timeshape,
@@ -288,7 +288,7 @@ const en: Content = {
       },
       {
         name: 'Fortuna.io',
-        summary: 'PWA to track investments, with a privacy mode that hides the amounts on screen.',
+        summary: 'Personal finance: income and spending by category, with an alert when spending goes over income and real-time sync.',
         stack: stack.fortuna,
         links: [
           { label: 'live', href: 'https://fortuna-io.vercel.app' },
@@ -316,11 +316,11 @@ const en: Content = {
     caption3d: 'CAD model · scroll to rotate',
     captionPhoto: 'FTC national championship',
     awards: [
+      { year: '2026', text: 'Volunteer judge at the FTC Goiás qualifier and team mentor' },
       { year: '2025', text: 'National Award for Excellence in Engineering and Documentation — FTC Brazil National Championship' },
       { year: '2025', text: '1st place overall (Inspire Award) — FTC regional qualifier' },
       { year: '2024', text: 'National Award for Excellence in Software and Autonomous Control — FTC Brazil National Championship' },
       { year: '2023', text: 'Speaker at Campus Party Goiás' },
-      { year: '2026', text: 'Volunteer judge at the FTC Goiás qualifier and team mentor' },
     ],
     atlas:
       'I co-founded Atlas Tech Education (2023–2026): taught logic and robotics to about 50 young students and mentored 12 of them in FIRST competitions.',
@@ -331,7 +331,7 @@ const en: Content = {
     about: [
       'I study Software Engineering at UniAlfa and have worked at TH since January 2026.',
       'I like problems with a database in the middle: consistency, security, and checking the numbers until they match.',
-      'Before coding for a living, I sold dinosaurs in ARK.',
+      'Before coding for a living, I sold dinosaurs in ARK, the video game: my first business.',
     ],
     where: 'Remote, or on-site in Goiânia, Brazil.',
     email: 'Send an email',
