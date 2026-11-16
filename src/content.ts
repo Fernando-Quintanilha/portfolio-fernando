@@ -1,5 +1,5 @@
 import hsSign from './assets/hsSign.png';
-import fortuna from './assets/dashfortune.png';
+import fortuna from './assets/fortuna.jpg';
 import catalogo from './assets/catalogo.jpg';
 import timeshape from './assets/timeshape.jpg';
 import fotoRobo from './assets/fernandoRobo.jpg';
