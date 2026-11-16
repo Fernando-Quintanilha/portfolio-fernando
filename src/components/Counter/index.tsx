@@ -1,12 +1,13 @@
 import { useRef } from 'react';
 import { gsap, useGSAP } from '../../lib/gsap';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
-
-const fmt = (n: number) => Math.round(n).toLocaleString('pt-BR');
+import { useLang } from '../../i18n';
 
 export function Counter({ value }: { value: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const reduced = useReducedMotion();
+  const { locale } = useLang();
+  const fmt = (n: number) => Math.round(n).toLocaleString(locale);
 
   useGSAP(
     () => {
@@ -24,7 +25,7 @@ export function Counter({ value }: { value: number }) {
         },
       });
     },
-    { dependencies: [value, reduced], revertOnUpdate: true },
+    { dependencies: [value, reduced, locale], revertOnUpdate: true },
   );
 
   return <span ref={ref}>{fmt(value)}</span>;

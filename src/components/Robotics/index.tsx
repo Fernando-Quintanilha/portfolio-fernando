@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Section } from '../Section';
-import { robotics } from '../../content';
+import { assets, links } from '../../content';
+import { useLang } from '../../i18n';
 import { ViewerBoundary } from './ViewerBoundary';
 
 const RobotViewer = lazy(() => import('./RobotViewer'));
@@ -21,7 +22,9 @@ export function Robotics() {
   const frame = useRef<HTMLDivElement>(null);
   const [near, setNear] = useState(false);
   const [failed, setFailed] = useState(false);
-  const url = robotics.robotModelUrl;
+  const { t } = useLang();
+  const robotics = t.robotics;
+  const url = assets.robotModelUrl;
   const use3d = Boolean(url) && !failed;
 
   useEffect(() => {
@@ -41,15 +44,15 @@ export function Robotics() {
 
   const photo = (
     <img
-      src={robotics.photo}
-      alt="Fernando com o robô da equipe na competição FTC"
+      src={assets.photo}
+      alt={robotics.photoAlt}
       loading="lazy"
       className="aspect-[4/5] w-full object-cover"
     />
   );
 
   return (
-    <Section id="robotica" index="03" label="robótica" title="Comecei programando um robô para andar sozinho.">
+    <Section id="robotica" index="03" label={robotics.label} title={robotics.title}>
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
         <figure data-reveal>
           <div ref={frame} className="relative border border-ink/20 bg-paper">
@@ -70,7 +73,7 @@ export function Robotics() {
           </div>
           <figcaption className="mt-4 flex justify-between font-mono text-[12px] text-ink-soft">
             <span>{robotics.season}</span>
-            <span>{use3d ? 'modelo do CAD · role para girar' : 'torneio nacional FTC'}</span>
+            <span>{use3d ? robotics.caption3d : robotics.captionPhoto}</span>
           </figcaption>
         </figure>
 
@@ -78,8 +81,8 @@ export function Robotics() {
           <p data-reveal className="text-lg leading-relaxed">
             {robotics.intro}
           </p>
-          <a data-reveal href={robotics.code.href} target="_blank" rel="noreferrer" className="link-line mt-4">
-            {robotics.code.label} ↗
+          <a data-reveal href={links.robotCode} target="_blank" rel="noreferrer" className="link-line mt-4">
+            {robotics.code} ↗
           </a>
 
           <ul className="mt-12">

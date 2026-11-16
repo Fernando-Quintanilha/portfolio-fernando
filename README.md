@@ -24,7 +24,8 @@ npm run build    # build de produção em dist/
 
 ## Onde mexer
 
-- Textos, números e links: `src/content.ts`
+- Textos (português e inglês), números e links: `src/content.ts`
+- Idioma: `src/i18n.tsx` + `src/lib/lang.ts` (ordem: `?lang=en|pt` na URL, escolha salva, idioma do navegador)
 - Navegação do robô: `src/lib/robot.ts` (controle proporcional de rumo e velocidade)
 - Desenho do campo e do robô: `src/components/Field/`
 - Design e plano: `docs/superpowers/`
@@ -33,7 +34,7 @@ npm run build    # build de produção em dist/
 
 1. Exporte o CAD em FBX e converta para `.glb` com Draco (o script usado está descrito no plano em `docs/superpowers/plans/`).
 2. Coloque o modelo em `public/models/robot.glb` e a silhueta vista de cima em `public/robot-top.png`.
-3. Preencha `robotModelUrl` e `spriteUrl` em `src/content.ts`.
+3. Preencha `assets.robotModelUrl` e `assets.spriteUrl` em `src/content.ts`.
 
 O decodificador Draco fica em `public/draco/` (copiado de `three/examples/jsm/libs/draco/gltf`).
 

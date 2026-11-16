@@ -1,12 +1,13 @@
 import { useRef } from 'react';
 import { Section } from '../Section';
-import { projects, type Project } from '../../content';
+import type { Project } from '../../content';
+import { useLang } from '../../i18n';
 import { gsap } from '../../lib/gsap';
 import { previewX } from '../../lib/preview';
 
 const FLOAT_QUERY = '(hover: hover) and (min-width: 768px)';
 
-function Row({ p, i }: { p: Project; i: number }) {
+function Row({ p, i, shotLabel }: { p: Project; i: number; shotLabel: string }) {
   const preview = useRef<HTMLImageElement>(null);
   const moveX = useRef<((v: number) => void) | null>(null);
   const moveY = useRef<((v: number) => void) | null>(null);
@@ -56,7 +57,7 @@ function Row({ p, i }: { p: Project; i: number }) {
         {p.image && (
           <img
             src={p.image}
-            alt={`Tela do ${p.name}`}
+            alt={`${shotLabel} ${p.name}`}
             loading="lazy"
             className="mt-6 aspect-[16/10] w-full border border-ink object-cover object-top float:hidden"
           />
@@ -78,11 +79,12 @@ function Row({ p, i }: { p: Project; i: number }) {
 }
 
 export function Projects() {
+  const { t } = useLang();
   return (
-    <Section id="projetos" index="02" label="projetos" title="Coisas que eu construí por conta própria.">
+    <Section id="projetos" index="02" label={t.projects.label} title={t.projects.title}>
       <ul className="border-b border-ink">
-        {projects.map((p, i) => (
-          <Row key={p.name} p={p} i={i} />
+        {t.projects.items.map((p, i) => (
+          <Row key={p.name} p={p} i={i} shotLabel={t.projects.screenshotOf} />
         ))}
       </ul>
     </Section>

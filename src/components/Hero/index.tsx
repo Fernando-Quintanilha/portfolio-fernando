@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { FieldCanvas } from '../Field/FieldCanvas';
-import { links, profile } from '../../content';
+import { links } from '../../content';
+import { useLang } from '../../i18n';
 import { gsap, useGSAP } from '../../lib/gsap';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import type { Vec } from '../../lib/robot';
@@ -16,6 +17,8 @@ export function Hero({ obstacle = null, spriteUrl, children }: Props) {
   const root = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const [touch] = useState(() => window.matchMedia('(hover: none)').matches);
+  const { t } = useLang();
+  const profile = t.profile;
 
   useGSAP(
     () => {
@@ -58,12 +61,12 @@ export function Hero({ obstacle = null, spriteUrl, children }: Props) {
         <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div data-hero-fade>
             <p className="max-w-md font-mono text-[14px] leading-relaxed">
-              Desenvolvedor back-end. {profile.line}
+              {profile.line}
             </p>
             <ul className="pointer-events-auto mt-5 flex flex-wrap gap-x-5 gap-y-2">
               <li>
                 <a className="link-line" href={links.curriculo} target="_blank" rel="noreferrer">
-                  currículo ↗
+                  {t.nav.resume} ↗
                 </a>
               </li>
               <li>
@@ -89,7 +92,7 @@ export function Hero({ obstacle = null, spriteUrl, children }: Props) {
               {coords}
             </p>
             <p className="mt-1 text-ink-soft">
-              {reduced ? 'rota planejada' : `${touch ? 'toque' : 'clique'} no campo para mudar a rota`}
+              {reduced ? profile.hintStatic : touch ? profile.hintTouch : profile.hintClick}
             </p>
           </div>
         </div>

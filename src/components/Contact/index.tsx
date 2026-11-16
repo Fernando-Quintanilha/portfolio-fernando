@@ -1,30 +1,32 @@
 import { Section } from '../Section';
-import { about, links, robotics } from '../../content';
-
-const big = [
-  { label: 'e-mail', href: `mailto:${links.email}`, text: 'Mandar um e-mail' },
-  { label: 'linkedin', href: links.linkedin, text: 'LinkedIn' },
-  { label: 'github', href: links.github, text: 'GitHub' },
-];
+import { assets, links } from '../../content';
+import { useLang } from '../../i18n';
 
 export function Contact() {
+  const { t } = useLang();
+  const c = t.contact;
+  const big = [
+    { label: 'e-mail', href: `mailto:${links.email}`, text: c.email },
+    { label: 'linkedin', href: links.linkedin, text: 'LinkedIn' },
+    { label: 'github', href: links.github, text: 'GitHub' },
+  ];
   return (
-    <Section id="contato" index="04" label="contato" title="Procuro vaga de back-end ou full-stack.">
+    <Section id="contato" index="04" label={c.label} title={c.title}>
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-16">
         <div data-reveal className="space-y-4 text-lg leading-relaxed">
           <figure className="mb-8 max-w-[16rem]">
             <img
-              src={robotics.photo}
-              alt="Fernando Quintanilha com o robô da equipe no torneio nacional FTC"
+              src={assets.photo}
+              alt={c.photoAlt}
               loading="lazy"
               className="aspect-[4/5] w-full border border-ink object-cover"
             />
-            <figcaption className="mt-2 font-mono text-[12px] text-ink-soft">torneio nacional FTC</figcaption>
+            <figcaption className="mt-2 font-mono text-[12px] text-ink-soft">{c.photoCaption}</figcaption>
           </figure>
-          {about.map((p) => (
+          {c.about.map((p) => (
             <p key={p}>{p}</p>
           ))}
-          <p className="font-mono text-[13px] text-ink-soft">Remoto ou presencial em Goiânia.</p>
+          <p className="font-mono text-[13px] text-ink-soft">{c.where}</p>
         </div>
 
         <div>
@@ -52,7 +54,7 @@ export function Contact() {
               whatsapp ↗
             </a>
             <a href={links.curriculo} target="_blank" rel="noreferrer" className="link-line">
-              currículo ↗
+              {t.nav.resume} ↗
             </a>
             <span className="font-mono text-[13px] text-ink-soft">{links.email}</span>
           </div>

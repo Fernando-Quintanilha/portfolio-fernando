@@ -7,12 +7,15 @@ import '@fontsource/archivo/800.css';
 import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/500.css';
 import App from './App.tsx';
+import { LangProvider } from './i18n';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <LangProvider>
+        <App />
+      </LangProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );

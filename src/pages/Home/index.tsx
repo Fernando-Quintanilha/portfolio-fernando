@@ -9,7 +9,8 @@ import { Footer } from '../../components/Footer';
 import { Dino } from '../../components/Dino';
 import { useSmoothScroll } from '../../hooks/useSmoothScroll';
 import { createSecretMatcher } from '../../lib/secretWord';
-import { robotics } from '../../content';
+import { assets } from '../../content';
+import { useLang } from '../../i18n';
 import type { Vec } from '../../lib/robot';
 
 const TAPS_NEEDED = 5;
@@ -17,6 +18,7 @@ const TAP_WINDOW_MS = 2000;
 
 export function Home() {
   useSmoothScroll();
+  const { lang } = useLang();
   const [walking, setWalking] = useState(false);
   const [dinoPos, setDinoPos] = useState<Vec | null>(null);
   const taps = useRef<number[]>([]);
@@ -42,16 +44,19 @@ export function Home() {
   return (
     <>
       <Navbar onLogoTap={onLogoTap} />
-      <main>
-        <Hero obstacle={dinoPos} spriteUrl={robotics.spriteUrl ?? undefined}>
-          <Dino walking={walking} onDone={() => setWalking(false)} onPosition={setDinoPos} />
-        </Hero>
-        <Work />
-        <Projects />
-        <Robotics />
-        <Contact />
-      </main>
-      <Footer />
+      {/* key={lang}: o SplitText mexe no DOM dos títulos; trocar de idioma remonta a página em vez de atualizar por cima. */}
+      <div key={lang} className="mx-auto max-w-[1240px] xl:border-x xl:border-ink/15">
+        <main>
+          <Hero obstacle={dinoPos} spriteUrl={assets.spriteUrl ?? undefined}>
+            <Dino walking={walking} onDone={() => setWalking(false)} onPosition={setDinoPos} />
+          </Hero>
+          <Work />
+          <Projects />
+          <Robotics />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

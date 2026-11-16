@@ -1,10 +1,12 @@
 import { Section } from '../Section';
 import { Counter } from '../Counter';
-import { work } from '../../content';
+import { useLang } from '../../i18n';
 
 export function Work() {
+  const { t } = useLang();
+  const work = t.work;
   return (
-    <Section id="trabalho" index="01" label="trabalho" title="Sistemas que a empresa usa todo dia.">
+    <Section id="trabalho" index="01" label={work.label} title={work.title}>
       <div data-reveal className="grid gap-y-2 border-y border-ink/20 py-4 font-mono text-[13px] sm:grid-cols-4">
         <p className="font-medium">{work.company}</p>
         <p>{work.role}</p>

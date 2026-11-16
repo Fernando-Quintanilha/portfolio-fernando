@@ -1,18 +1,43 @@
 import { useState } from 'react';
 import { links } from '../../content';
 import { scrollToId } from '../../hooks/useSmoothScroll';
-
-const items = [
-  { id: 'trabalho', n: '01', label: 'trabalho' },
-  { id: 'projetos', n: '02', label: 'projetos' },
-  { id: 'robotica', n: '03', label: 'robótica' },
-  { id: 'contato', n: '04', label: 'contato' },
-];
+import { useLang } from '../../i18n';
+import type { Lang } from '../../lib/lang';
 
 type Props = { onLogoTap?: () => void };
 
+function LangToggle() {
+  const { lang, setLang } = useLang();
+  const opt = (l: Lang, label: string) => (
+    <button
+      type="button"
+      onClick={() => setLang(l)}
+      aria-pressed={lang === l}
+      lang={l === 'pt' ? 'pt-BR' : 'en'}
+      className={lang === l ? 'text-ink underline decoration-signal decoration-2 underline-offset-4' : 'text-ink-soft hover:text-ink'}
+    >
+      {label}
+    </button>
+  );
+  return (
+    <div className="flex items-center gap-2" role="group" aria-label="Idioma / Language">
+      {opt('pt', 'PT')}
+      <span className="text-ink-soft">/</span>
+      {opt('en', 'EN')}
+    </div>
+  );
+}
+
 export function Navbar({ onLogoTap }: Props) {
   const [open, setOpen] = useState(false);
+  const { t } = useLang();
+
+  const items = [
+    { id: 'trabalho', n: '01', label: t.nav.work },
+    { id: 'projetos', n: '02', label: t.nav.projects },
+    { id: 'robotica', n: '03', label: t.nav.robotics },
+    { id: 'contato', n: '04', label: t.nav.contact },
+  ];
 
   const go = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
@@ -22,7 +47,7 @@ export function Navbar({ onLogoTap }: Props) {
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-ink/15 bg-paper/95">
-      <nav className="flex h-14 items-center justify-between px-4 font-mono text-[13px] sm:px-8">
+      <nav className="mx-auto flex h-14 max-w-[1240px] items-center justify-between gap-4 px-4 font-mono text-[13px] sm:px-8 xl:border-x xl:border-ink/15">
         <a
           href="#inicio"
           onClick={(e) => {
@@ -30,7 +55,7 @@ export function Navbar({ onLogoTap }: Props) {
             onLogoTap?.();
           }}
           className="font-medium"
-          aria-label="Fernando Quintanilha, voltar ao início"
+          aria-label={t.nav.home}
         >
           FQ/
         </a>
@@ -45,19 +70,21 @@ export function Navbar({ onLogoTap }: Props) {
           ))}
         </ul>
 
-        <a href={links.curriculo} target="_blank" rel="noreferrer" className="link-line hidden md:inline-flex">
-          currículo ↗
-        </a>
-
-        <button
-          type="button"
-          className="md:hidden"
-          aria-expanded={open}
-          aria-controls="menu-mobile"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? 'fechar' : 'menu'}
-        </button>
+        <div className="flex items-center gap-5">
+          <LangToggle />
+          <a href={links.curriculo} target="_blank" rel="noreferrer" className="link-line hidden md:inline-flex">
+            {t.nav.resume} ↗
+          </a>
+          <button
+            type="button"
+            className="md:hidden"
+            aria-expanded={open}
+            aria-controls="menu-mobile"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? t.nav.close : t.nav.menu}
+          </button>
+        </div>
       </nav>
 
       {open && (
@@ -81,7 +108,7 @@ export function Navbar({ onLogoTap }: Props) {
             ))}
             <li className="border-t border-ink/20 pt-6">
               <a href={links.curriculo} target="_blank" rel="noreferrer" className="link-line">
-                currículo ↗
+                {t.nav.resume} ↗
               </a>
             </li>
           </ul>

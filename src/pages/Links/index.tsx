@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { links, profile } from '../../content';
+import { links } from '../../content';
+import { useLang } from '../../i18n';
 
 const items = [
   { label: 'LinkedIn', href: links.linkedin },
@@ -9,6 +10,8 @@ const items = [
 ];
 
 export function Links() {
+  const { t } = useLang();
+  const profile = t.profile;
   return (
     <main className="mx-auto flex min-h-[100svh] max-w-md flex-col justify-center px-4 py-16">
       <p className="label">FQ/ links</p>
@@ -18,13 +21,13 @@ export function Links() {
         {profile.last}
       </h1>
       <p className="mt-4 font-mono text-[13px] leading-relaxed text-ink-soft">
-        Desenvolvedor back-end. {profile.line}
+        {profile.line}
       </p>
 
       <ul className="mt-10 border-b border-ink">
         <li className="border-t border-ink">
           <Link to="/" className="flex items-baseline justify-between py-4 font-display text-2xl font-extrabold">
-            Portfólio <span className="font-mono text-base">→</span>
+            {t.linksPage.portfolio} <span className="font-mono text-base">→</span>
           </Link>
         </li>
         {items.map((it) => (
