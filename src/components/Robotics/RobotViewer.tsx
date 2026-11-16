@@ -35,7 +35,7 @@ export default function RobotViewer({ url, onError }: Props) {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(32, 1, 0.01, 50);
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x8a857c, 0.9));
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x7d8890, 0.9));
     const key = new THREE.DirectionalLight(0xffffff, 1.9);
     key.position.set(2, 3, 1.5);
     scene.add(key);

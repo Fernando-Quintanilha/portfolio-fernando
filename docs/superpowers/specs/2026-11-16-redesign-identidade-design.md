@@ -55,9 +55,9 @@ O objetivo agora é **conseguir uma vaga de desenvolvedor back-end ou full-stack
 ## Identidade visual
 
 **Cores (tokens no Tailwind)**
-- `paper` `#ECE9E2`: fundo
-- `ink` `#151515`: texto e traços
-- `ink-soft` `#5C5953`: texto secundário
+- `paper` `#E3EAEE`: fundo (blueprint claro; era `#ECE9E2` até 2026-11-16)
+- `ink` `#0E1B24`: texto e traços
+- `ink-soft` `#4E5D67`: texto secundário
 - `signal` `#FF4F1A`: destaque em gráfico e elementos grandes
 - `signal-text` `#B83A10`: laranja para texto pequeno (contraste AA sobre o papel)
 - linhas do campo: `ink` a 8%

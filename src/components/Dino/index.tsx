@@ -9,7 +9,7 @@ export function DinoDrawing({ walking = false, className = '' }: { walking?: boo
       viewBox="0 0 120 80"
       className={`${className} ${walking ? 'dino-walking' : ''}`}
       fill="none"
-      stroke="#151515"
+      stroke="#0E1B24"
       strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -17,7 +17,7 @@ export function DinoDrawing({ walking = false, className = '' }: { walking?: boo
     >
       <path
         d="M70 30 V14 Q70 8 76 8 H102 Q108 8 108 14 V20 Q108 24 104 24 H90 V28 Q88 36 84 40 Q78 47 72 52 Q62 60 50 58 Q30 56 6 52 Q34 46 56 44 Q66 40 70 30 Z"
-        fill="#ECE9E2"
+        fill="#E3EAEE"
       />
       <path d="M90 24 H97" />
       <path d="M80 44 l7 3 l-1 4" />

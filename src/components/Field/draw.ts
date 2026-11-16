@@ -1,6 +1,6 @@
 import type { RobotState, Vec } from '../../lib/robot';
 
-export const INK = '#151515';
+export const INK = '#0E1B24';
 export const SIGNAL = '#FF4F1A';
 
 /** Grade de placas quadradas (6 no lado menor), com subgrade de 3 por placa. */
@@ -11,7 +11,7 @@ export function drawField(ctx: CanvasRenderingContext2D, w: number, h: number) {
   const oy = (h % tile) / 2;
 
   const lines = (step: number, alpha: number) => {
-    ctx.strokeStyle = `rgba(21,21,21,${alpha})`;
+    ctx.strokeStyle = `rgba(14,27,36,${alpha})`;
     ctx.lineWidth = 1;
     ctx.beginPath();
     for (let x = ox % step; x <= w; x += step) {
@@ -106,7 +106,7 @@ export function drawRobot(
     const cy = wy * (half * 0.78 + wheelW / 2);
     ctx.fillStyle = INK;
     ctx.fillRect(cx - wheelL / 2, cy - wheelW / 2, wheelL, wheelW);
-    ctx.strokeStyle = '#ECE9E2';
+    ctx.strokeStyle = '#E3EAEE';
     ctx.lineWidth = 1;
     ctx.beginPath();
     for (let i = -2; i <= 2; i++) {
