@@ -61,7 +61,11 @@ export function Navbar({ onLogoTap }: Props) {
       </nav>
 
       {open && (
-        <div id="menu-mobile" className="h-[calc(100svh-3.5rem)] bg-paper px-4 pt-8 md:hidden">
+        <div
+          id="menu-mobile"
+          data-lenis-prevent
+          className="h-[calc(100svh-3.5rem)] overflow-y-auto overscroll-contain bg-paper px-4 pb-8 pt-8 md:hidden"
+        >
           <ul className="flex flex-col">
             {items.map((it) => (
               <li key={it.id} className="border-t border-ink/20">

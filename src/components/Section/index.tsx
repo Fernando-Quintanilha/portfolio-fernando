@@ -34,7 +34,7 @@ export function Section({ id, index, label, title, children }: Props) {
       });
       return () => split.revert();
     },
-    { scope: root, dependencies: [reduced] },
+    { scope: root, dependencies: [reduced], revertOnUpdate: true },
   );
 
   return (

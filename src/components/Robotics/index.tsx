@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Section } from '../Section';
 import { robotics } from '../../content';
+import { ViewerBoundary } from './ViewerBoundary';
 
 const RobotViewer = lazy(() => import('./RobotViewer'));
 
@@ -56,9 +57,11 @@ export function Robotics() {
             {use3d && url ? (
               <div className="aspect-square w-full">
                 {near && (
-                  <Suspense fallback={null}>
-                    <RobotViewer url={url} onError={() => setFailed(true)} />
-                  </Suspense>
+                  <ViewerBoundary onError={() => setFailed(true)}>
+                    <Suspense fallback={null}>
+                      <RobotViewer url={url} onError={() => setFailed(true)} />
+                    </Suspense>
+                  </ViewerBoundary>
                 )}
               </div>
             ) : (

@@ -20,7 +20,14 @@ export default function RobotViewer({ url, onError }: Props) {
     if (!el) return;
 
     // preserveDrawingBuffer: o quadro só é redesenhado quando algo muda, então o último desenho precisa ficar na tela.
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+    } catch {
+      // Sem WebGL (aparelho antigo, aceleração desligada): a seção volta para a foto.
+      errorRef.current();
+      return;
+    }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.NeutralToneMapping;

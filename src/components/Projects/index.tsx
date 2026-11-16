@@ -2,13 +2,17 @@ import { useRef } from 'react';
 import { Section } from '../Section';
 import { projects, type Project } from '../../content';
 import { gsap } from '../../lib/gsap';
+import { previewX } from '../../lib/preview';
+
+const FLOAT_QUERY = '(hover: hover) and (min-width: 768px)';
 
 function Row({ p, i }: { p: Project; i: number }) {
   const preview = useRef<HTMLImageElement>(null);
   const moveX = useRef<((v: number) => void) | null>(null);
   const moveY = useRef<((v: number) => void) | null>(null);
 
-  const canHover = () => window.matchMedia('(hover: hover)').matches;
+  // Mesma condição das classes `float:` abaixo: prévia flutuante só com mouse e tela larga.
+  const canHover = () => window.matchMedia(FLOAT_QUERY).matches;
 
   const onEnter = () => {
     if (!preview.current || !canHover()) return;
@@ -21,7 +25,8 @@ function Row({ p, i }: { p: Project; i: number }) {
   };
   const onMove = (e: React.MouseEvent<HTMLLIElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
-    moveX.current?.(e.clientX - r.left + 24);
+    const w = preview.current?.offsetWidth ?? 320;
+    moveX.current?.(previewX(e.clientX - r.left, r.width, w));
     moveY.current?.(e.clientY - r.top - 100);
   };
 
@@ -53,7 +58,7 @@ function Row({ p, i }: { p: Project; i: number }) {
             src={p.image}
             alt={`Tela do ${p.name}`}
             loading="lazy"
-            className="mt-6 aspect-[16/10] w-full border border-ink object-cover object-top md:hidden"
+            className="mt-6 aspect-[16/10] w-full border border-ink object-cover object-top float:hidden"
           />
         )}
       </div>
@@ -65,7 +70,7 @@ function Row({ p, i }: { p: Project; i: number }) {
           alt=""
           aria-hidden="true"
           loading="lazy"
-          className="pointer-events-none invisible absolute left-0 top-0 z-10 hidden aspect-[16/10] w-80 scale-95 border border-ink object-cover object-top opacity-0 md:block"
+          className="pointer-events-none invisible absolute left-0 top-0 z-10 hidden aspect-[16/10] w-80 scale-95 border border-ink object-cover object-top opacity-0 float:block"
         />
       )}
     </li>

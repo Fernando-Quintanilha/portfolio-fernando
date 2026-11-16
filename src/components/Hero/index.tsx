@@ -29,7 +29,7 @@ export function Hero({ obstacle = null, spriteUrl, children }: Props) {
       });
       gsap.from('[data-hero-fade]', { opacity: 0, y: 12, duration: 0.8, delay: 0.6, stagger: 0.06 });
     },
-    { scope: root, dependencies: [reduced] },
+    { scope: root, dependencies: [reduced], revertOnUpdate: true },
   );
 
   return (

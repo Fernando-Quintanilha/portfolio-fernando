@@ -24,7 +24,7 @@ export function Counter({ value }: { value: number }) {
         },
       });
     },
-    { dependencies: [value, reduced] },
+    { dependencies: [value, reduced], revertOnUpdate: true },
   );
 
   return <span ref={ref}>{fmt(value)}</span>;

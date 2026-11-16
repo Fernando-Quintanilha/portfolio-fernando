@@ -15,6 +15,10 @@ export default {
         display: ['Archivo', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
+      screens: {
+        // Prévia flutuante dos projetos: só com mouse e tela larga (tablet sem mouse vê a imagem na linha).
+        float: { raw: '(hover: hover) and (min-width: 768px)' },
+      },
       letterSpacing: {
         tightest: '-0.045em',
       },
