@@ -21,8 +21,15 @@ export function Section({ id, index, label, title, children }: Props) {
       gsap.from('[data-rule]', { scaleX: 0, transformOrigin: 'left', duration: 1, ease: 'power3.inOut', scrollTrigger: trigger });
       const title = root.current.querySelector<HTMLElement>('[data-title]');
       if (!title) return;
-      const split = SplitText.create(title, { type: 'lines', mask: 'lines' });
-      gsap.from(split.lines, { yPercent: 105, duration: 0.9, ease: 'power4.out', stagger: 0.08, scrollTrigger: trigger });
+      // autoSplit: espera a fonte carregar e refaz as linhas quando a largura muda;
+      // sem isso, a primeira visita mede as linhas com a fonte reserva e quebra uma palavra por linha.
+      const split = SplitText.create(title, {
+        type: 'lines',
+        mask: 'lines',
+        autoSplit: true,
+        onSplit: (self) =>
+          gsap.from(self.lines, { yPercent: 105, duration: 0.9, ease: 'power4.out', stagger: 0.08, scrollTrigger: trigger }),
+      });
       gsap.utils.toArray<HTMLElement>('[data-reveal]', root.current).forEach((el) => {
         gsap.from(el, {
           opacity: 0,
