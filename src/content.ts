@@ -10,8 +10,7 @@ export const links = {
   linkedin: 'https://www.linkedin.com/in/fernando-quintanilha',
   github: 'https://github.com/Fernando-Quintanilha',
   whatsapp: 'https://wa.me/5562984048425',
-  // Sem PDF em public/ ainda: o currículo aponta para o LinkedIn.
-  curriculo: 'https://www.linkedin.com/in/fernando-quintanilha',
+  curriculo: '/Fernando-Quintanilha-Curriculo.pdf',
 };
 
 export const profile = {

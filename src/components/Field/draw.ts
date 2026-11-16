@@ -79,6 +79,8 @@ export function drawRobot(
   if (sprite && sprite.complete && sprite.naturalWidth > 0) {
     // Na imagem, a frente do robô aponta para cima; no campo, heading 0 aponta para a direita.
     ctx.rotate(Math.PI / 2);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     const k = size / Math.max(sprite.naturalWidth, sprite.naturalHeight);
     const sw = sprite.naturalWidth * k;
     const sh = sprite.naturalHeight * k;
