@@ -1,77 +1,99 @@
-import { ArrowRight } from 'lucide-react';
-import { FaWhatsapp } from 'react-icons/fa';
+import { useRef, useState } from 'react';
+import { FieldCanvas } from '../Field/FieldCanvas';
+import { links, profile } from '../../content';
+import { gsap, useGSAP } from '../../lib/gsap';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
+import type { Vec } from '../../lib/robot';
 
-export function Hero() {
-    const isAvailable = true;
+type Props = {
+  obstacle?: Vec | null;
+  spriteUrl?: string;
+  children?: React.ReactNode;
+};
 
-    return (
-        <section className="relative flex min-h-screen items-center justify-center pt-20 overflow-hidden">
+export function Hero({ obstacle = null, spriteUrl, children }: Props) {
+  const [coords, setCoords] = useState('');
+  const root = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const [touch] = useState(() => window.matchMedia('(hover: none)').matches);
 
-            <div className={`absolute top-20 left-1/2 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full blur-[100px] ${isAvailable ? 'bg-emerald-500/20' : 'bg-red-500/20'
-                }`} />
+  useGSAP(
+    () => {
+      if (reduced) return;
+      gsap.from('[data-hero-line]', {
+        yPercent: 110,
+        duration: 1.1,
+        ease: 'power4.out',
+        stagger: 0.08,
+        delay: 0.15,
+      });
+      gsap.from('[data-hero-fade]', { opacity: 0, y: 12, duration: 0.8, delay: 0.6, stagger: 0.06 });
+    },
+    { scope: root, dependencies: [reduced] },
+  );
 
-            <div className="mx-auto max-w-7xl px-6 text-center">
+  return (
+    <section ref={root} id="inicio" className="relative min-h-[100svh] overflow-hidden">
+      <FieldCanvas onReadout={setCoords} obstacle={obstacle} spriteUrl={spriteUrl} />
+      {children}
 
-                <div className={`mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${isAvailable
-                        ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400'
-                        : 'border-red-500/30 bg-red-500/10 text-red-500'
-                    }`}>
-                    <span className="relative flex h-2 w-2">
-                        <span className={`absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping ${isAvailable ? 'bg-emerald-400' : 'bg-red-400'
-                            }`}></span>
-                        <span className={`relative inline-flex rounded-full h-2 w-2 ${isAvailable ? 'bg-emerald-500' : 'bg-red-500'
-                            }`}></span>
-                    </span>
-                    {isAvailable ? "Disponível para novos projetos" : "Agenda fechada no momento"}
-                </div>
+      <div className="pointer-events-none relative flex min-h-[100svh] flex-col justify-end px-4 pb-8 pt-24 sm:px-8 sm:pb-10">
+        <p data-hero-fade className="label mb-4">
+          {profile.role}
+        </p>
 
-                <h1 className="mb-6 text-5xl font-extrabold tracking-tight text-white sm:text-7xl">
-                    Engenheiro de Software<br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">
-                        Full Stack
-                    </span>
-                </h1>
+        <h1 className="font-display text-[clamp(3.4rem,12vw,10rem)] font-extrabold leading-[0.86] tracking-tightest">
+          <span className="block overflow-hidden pb-[0.04em]">
+            <span data-hero-line className="block">
+              {profile.first}
+            </span>
+          </span>
+          <span className="block overflow-hidden pb-[0.04em]">
+            <span data-hero-line className="block">
+              {profile.last}
+            </span>
+          </span>
+        </h1>
 
-                <p className="mx-auto mb-10 max-w-2xl text-lg text-gray-400 sm:text-xl">
-                    Construo sistemas completos do banco de dados à interface. Especializado em arquitetura escalável, automação de processos e aplicações web de alta performance.
-                </p>
+        <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div data-hero-fade>
+            <p className="max-w-md font-mono text-[14px] leading-relaxed">
+              Desenvolvedor back-end. {profile.line}
+            </p>
+            <ul className="pointer-events-auto mt-5 flex flex-wrap gap-x-5 gap-y-2">
+              <li>
+                <a className="link-line" href={links.curriculo} target="_blank" rel="noreferrer">
+                  currículo ↗
+                </a>
+              </li>
+              <li>
+                <a className="link-line" href={links.github} target="_blank" rel="noreferrer">
+                  github ↗
+                </a>
+              </li>
+              <li>
+                <a className="link-line" href={links.linkedin} target="_blank" rel="noreferrer">
+                  linkedin ↗
+                </a>
+              </li>
+              <li>
+                <a className="link-line" href={`mailto:${links.email}`}>
+                  e-mail ↗
+                </a>
+              </li>
+            </ul>
+          </div>
 
-                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                    <a
-                        href="https://wa.me/5562984048425"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex items-center gap-2 rounded-full bg-emerald-600 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-emerald-700 hover:scale-105 shadow-xl shadow-emerald-500/20"
-                    >
-                        <FaWhatsapp size={20} />
-                        Solicitar Orçamento
-                    </a>
-
-                    <a
-                        href="#projetos"
-                        className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-white/10"
-                    >
-                        Ver portfólio
-                        <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
-                    </a>
-                </div>
-
-                <div className="mt-16 pt-8 border-t border-white/5">
-                    <p className="text-sm text-gray-500 mb-4 uppercase tracking-wider">Stack Completo</p>
-                    <div className="flex flex-wrap justify-center gap-8 text-gray-400">
-                        <span className="hover:text-emerald-400 transition-colors cursor-default font-semibold">React.js</span>
-                        <span className="hover:text-cyan-400 transition-colors cursor-default font-semibold">TypeScript</span>
-                        <span className="hover:text-blue-400 transition-colors cursor-default font-semibold">C#</span>
-                        <span className="hover:text-yellow-400 transition-colors cursor-default font-semibold">Python</span>
-                        <span className="hover:text-orange-400 transition-colors cursor-default font-semibold">Docker</span>
-                        <span className="hover:text-red-400 transition-colors cursor-default font-semibold">SQL</span>
-                        <span className="hover:text-purple-400 transition-colors cursor-default font-semibold">Tailwind CSS</span>
-                        <span className="hover:text-pink-600 transition-color cursor-default font-semibold">POO</span>
-                        <span className="hover:text-lime-500 transition-colocr cursor-default font-semibold">Vite</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    );
+          <div data-hero-fade className="font-mono text-[12px] sm:text-right">
+            <p className="min-h-[1.2em] text-signal-text" aria-hidden="true">
+              {coords}
+            </p>
+            <p className="mt-1 text-ink-soft">
+              {reduced ? 'rota planejada' : `${touch ? 'toque' : 'clique'} no campo para mudar a rota`}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

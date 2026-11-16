@@ -2,10 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper text-ink antialiased font-sans;
+  }
+  ::selection {
+    @apply bg-signal text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid #ff4f1a;
+    outline-offset: 3px;
+  }
 }
 
-body {
-  @apply bg-dark-900 text-dark-100 antialiased;
+@layer components {
+  .link-line {
+    @apply relative inline-flex items-center gap-1 font-mono text-[13px];
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 100% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease, color 0.2s ease;
+  }
+  .link-line:hover {
+    @apply text-signal-text;
+    background-size: 0% 1px;
+  }
+  .label {
+    @apply font-mono text-[12px] uppercase tracking-[0.08em] text-ink-soft;
+  }
+}
+
+.dino-legs-b {
+  opacity: 0;
+}
+.dino-walking .dino-legs-a {
+  animation: dino-step 0.36s steps(1) infinite;
+}
+.dino-walking .dino-legs-b {
+  animation: dino-step 0.36s steps(1) infinite reverse;
+}
+@keyframes dino-step {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }

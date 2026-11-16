@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 .vercel
 .env*.local
+
+# modelos 3D brutos (CAD)
+modelo-3d/
+.superpowers/

@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# Portfólio — Fernando Quintanilha
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site pessoal de desenvolvedor back-end. A entrada é um campo de FTC em que o robô navega sozinho (clique ou toque para mudar a rota); as seções seguem o formato de ficha técnica: trabalho, projetos, robótica e contato.
 
-Currently, two official plugins are available:
+No ar: https://portfolio-fernando-iota.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## React Compiler
+- React 19 + TypeScript + Vite 7
+- Tailwind CSS 3 (tokens `paper`, `ink`, `ink-soft`, `signal`, `signal-text`)
+- GSAP (ScrollTrigger, SplitText) e Lenis para animação e rolagem
+- Three.js só na seção de robótica, carregado sob demanda
+- Fontes Archivo e JetBrains Mono servidas pelo próprio site (Fontsource)
+- Vitest para a lógica pura (`src/lib`)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Rodar
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev      # desenvolvimento
+npm test         # testes da navegação do robô e da palavra secreta
+npm run build    # build de produção em dist/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Onde mexer
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Textos, números e links: `src/content.ts`
+- Navegação do robô: `src/lib/robot.ts` (controle proporcional de rumo e velocidade)
+- Desenho do campo e do robô: `src/components/Field/`
+- Design e plano: `docs/superpowers/`
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Trocar o robô 3D
+
+1. Exporte o CAD em FBX e converta para `.glb` com Draco (o script usado está descrito no plano em `docs/superpowers/plans/`).
+2. Coloque o modelo em `public/models/robot.glb` e a silhueta vista de cima em `public/robot-top.png`.
+3. Preencha `robotModelUrl` e `spriteUrl` em `src/content.ts`.
+
+O decodificador Draco fica em `public/draco/` (copiado de `three/examples/jsm/libs/draco/gltf`).
+
+## Surpresa
+
+Digite `rawr` em qualquer lugar da página.
