@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { content, type Content } from './content';
-import { detectLang, type Lang } from './lib/lang';
+import { detectLang, searchWithLang, type Lang } from './lib/lang';
 
 const KEY = 'fq-lang';
 
@@ -22,6 +22,9 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
 
   const setLang = useCallback((l: Lang) => {
     setLangState(l);
+    // A URL vence a escolha salva; se ela traz ?lang=, atualiza para a recarga manter o idioma escolhido.
+    const next = searchWithLang(window.location.search, l);
+    if (next) window.history.replaceState(null, '', `${window.location.pathname}${next}${window.location.hash}`);
     try {
       localStorage.setItem(KEY, l);
     } catch {

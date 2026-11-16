@@ -1,5 +1,15 @@
 import { expect, test } from 'vitest';
-import { detectLang } from './lang';
+import { detectLang, searchWithLang } from './lang';
+
+test('trocar de idioma atualiza o ?lang= que já está na URL', () => {
+  expect(searchWithLang('?lang=en', 'pt')).toBe('?lang=pt');
+  expect(searchWithLang('?x=1&lang=en', 'pt')).toBe('?x=1&lang=pt');
+});
+
+test('sem ?lang= na URL, o endereço não muda', () => {
+  expect(searchWithLang('', 'en')).toBeNull();
+  expect(searchWithLang('?x=1', 'en')).toBeNull();
+});
 
 test('parâmetro ?lang= na URL vence tudo', () => {
   expect(detectLang({ search: '?lang=en', stored: 'pt', languages: ['pt-BR'] })).toBe('en');
