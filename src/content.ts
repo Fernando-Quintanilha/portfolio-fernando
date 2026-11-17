@@ -56,6 +56,7 @@ export type Content = {
     season: string;
     intro: string;
     code: string;
+    carry: { title: string; items: string[] };
     photoAlt: string;
     caption3d: string;
     captionPhoto: string;
@@ -142,7 +143,7 @@ const pt: Content = {
       {
         name: 'TimeShape',
         summary:
-          'SaaS de agendamento em produção: página pública de reservas, Google Calendar e assinatura recorrente pelo Mercado Pago. Restrição de exclusão no PostgreSQL impede reserva sobreposta.',
+          'SaaS de agendamento em produção: o aluno reserva horário sem criar conta, a agenda sincroniza com o Google Calendar e a assinatura é cobrada pelo Mercado Pago. O próprio banco de dados impede duas reservas no mesmo horário.',
         stack: stack.timeshape,
         links: [{ label: 'app.timeshape.online', href: 'https://app.timeshape.online' }],
         image: timeshape,
@@ -150,7 +151,7 @@ const pt: Content = {
       },
       {
         name: 'HoleriteSign',
-        summary: 'O RH sobe o holerite em PDF, o funcionário recebe o link por WhatsApp, confirma os dados e assina com selfie.',
+        summary: 'O RH sobe o holerite em PDF, o funcionário recebe o link por WhatsApp, confirma os dados e assina com selfie. Em uso: mais de 980 holerites assinados.',
         stack: stack.holerite,
         links: [],
         note: 'código privado, mostro na entrevista',
@@ -180,8 +181,16 @@ const pt: Content = {
     title: 'Comecei programando um robô para andar sozinho.',
     season: 'Into the Deep · 2024–25',
     intro:
-      'Comecei na robótica FIRST aos 12 anos. Programei a navegação autônoma do robô em Java: odometria, controle PID, IMU e visão com AprilTags e OpenCV.',
+      'Comecei na robótica FIRST aos 12 anos. Programei em Java o robô para se mover sozinho, usando sensores e câmera para saber onde ele está no campo (odometria, controle PID, IMU, AprilTags e OpenCV).',
     code: 'código do robô',
+    carry: {
+      title: 'O que levei para o trabalho',
+      items: [
+        'Java orientado a objetos e máquinas de estado: a base do back-end que escrevo hoje.',
+        'Documentação premiada no nacional: hoje escrevo o plano antes de mexer no banco de produção.',
+        'Ensinar 50 jovens: explicar sistema para quem não é técnico, como faço com os usuários na TH.',
+      ],
+    },
     photoAlt: 'Fernando com o robô da equipe na competição FTC',
     caption3d: 'modelo do CAD · role para girar',
     captionPhoto: 'torneio nacional FTC',
@@ -201,7 +210,6 @@ const pt: Content = {
     about: [
       'Estudo Engenharia de Software na UniAlfa e trabalho na TH desde janeiro de 2026.',
       'Gosto de problema que tem banco de dados no meio: consistência, segurança e conferir o número até bater.',
-      'Antes de programar por profissão, vendia dinossauros no ARK, o jogo: meu primeiro negócio.',
     ],
     where: 'Remoto ou presencial em Goiânia.',
     email: 'Mandar um e-mail',
@@ -272,7 +280,7 @@ const en: Content = {
       {
         name: 'TimeShape',
         summary:
-          'Scheduling SaaS in production: public booking page, Google Calendar sync and recurring billing through Mercado Pago. A PostgreSQL exclusion constraint prevents overlapping bookings.',
+          'Scheduling SaaS in production: students book a slot without creating an account, the calendar syncs with Google Calendar and subscriptions are billed through Mercado Pago. The database itself prevents two bookings at the same time.',
         stack: stack.timeshape,
         links: [{ label: 'app.timeshape.online', href: 'https://app.timeshape.online' }],
         image: timeshape,
@@ -280,7 +288,7 @@ const en: Content = {
       },
       {
         name: 'HoleriteSign',
-        summary: 'HR uploads the payslip PDF, the employee gets a link on WhatsApp, confirms their details and signs with a selfie.',
+        summary: 'HR uploads the payslip PDF, the employee gets a link on WhatsApp, confirms their details and signs with a selfie. In use: over 980 payslips signed.',
         stack: stack.holerite,
         links: [],
         note: 'private code, happy to walk through it in an interview',
@@ -310,8 +318,16 @@ const en: Content = {
     title: 'I started by programming a robot to drive itself.',
     season: 'Into the Deep · 2024–25',
     intro:
-      'I joined FIRST robotics at 12. I wrote the robot’s autonomous navigation in Java: odometry, PID control, IMU, and vision with AprilTags and OpenCV.',
+      'I joined FIRST robotics at 12. I programmed the robot in Java to drive itself, using sensors and a camera to know where it is on the field (odometry, PID control, IMU, AprilTags and OpenCV).',
     code: 'robot code',
+    carry: {
+      title: 'What I brought to work',
+      items: [
+        'Object-oriented Java and state machines: the base of the back-end code I write today.',
+        'Award-winning documentation at nationals: today I write the plan before touching the production database.',
+        'Teaching 50 students: explaining systems to non-technical people, as I do with the users at TH.',
+      ],
+    },
     photoAlt: 'Fernando with the team robot at the FTC competition',
     caption3d: 'CAD model · scroll to rotate',
     captionPhoto: 'FTC national championship',
@@ -331,7 +347,6 @@ const en: Content = {
     about: [
       'I study Software Engineering at UniAlfa and have worked at TH since January 2026.',
       'I like problems with a database in the middle: consistency, security, and checking the numbers until they match.',
-      'Before coding for a living, I sold dinosaurs in ARK, the video game: my first business.',
     ],
     where: 'Remote, or on-site in Goiânia, Brazil.',
     email: 'Send an email',

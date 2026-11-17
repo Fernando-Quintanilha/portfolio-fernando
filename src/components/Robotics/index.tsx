@@ -85,6 +85,18 @@ export function Robotics() {
             {robotics.code} ↗
           </a>
 
+          <div data-reveal className="mt-10">
+            <p className="font-mono text-[12px] uppercase tracking-wider text-ink-soft">{robotics.carry.title}</p>
+            <ul className="mt-3">
+              {robotics.carry.items.map((item) => (
+                <li key={item} className="grid grid-cols-[1.25rem_minmax(0,1fr)] gap-2 py-1.5 leading-snug">
+                  <span className="font-mono text-signal-text">→</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <ul className="mt-12">
             {robotics.awards.map((a) => (
               <li
